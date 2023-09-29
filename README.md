@@ -63,13 +63,12 @@ conda activate tfgpu
 ## 0.4 Check if the Tensorflow is correctly installed
 
 ```bash
-(tfcpu) $ python
-Python 3.6.8 |Anaconda, Inc.| (default, Dec 29 2018, 19:04:46)
-[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
+~ python
+Python 3.10.12 (main, Jul  5 2023, 14:49:34) [Clang 14.0.6 ] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import tensorflow as tf
 >>> tf.__version__
-'1.13.1'
+'2.12.0'
 >>>
 ```
 
