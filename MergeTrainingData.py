@@ -4,39 +4,14 @@ import time
 import os
 
 list_of_data = [
-    # 'Data/MergedData_surya_100821.txt',
-    # 'Data/MergedData_surya_102221.txt',
-    # 'Data/MergedData_surya_102521.txt',
-    # 'Data/MergedData_surya_120921.txt',
-    # 'Data/MergedData_Surya_011322.txt',
-    # 'Data/MergedData_Surya_021622.txt',
-    # 'Data/MergedData_Surya_031122.txt',
-    # 'Data/MergedData_Surya_042022.txt',
-    'Data/XuFu/XuFu_cerebellum_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_cerebellum_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_cortex_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_hippocampus_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_midbrain_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_striatum_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_thalaums_MergedData.txt',
-    'Data/XuFu/XuFu_highConcentration_saline_whoeBrain_MergedData.txt',
-    'Data/SyntheticData/20190510_135816_syn_data.txt',   
-    # 'Data/Qianye/MergedData_Qianye_03072023_partail.txt', 
-    'Data/Qianye/MergedData_Qianye_6K_2023_06_20.txt',
-    'Data/Qianye/MergedData_Qianye_3K_2023_06_28.txt',
-
-    
-
-    # === Below is previous data ===
-    # 'Data/cerebellum/MergedData.txt',
-    # 'Data/high concentration/saline/cerebellum/MergedData.txt',
-    # 'Data/high concentration/saline/cortex/MergedData.txt',
-    # 'Data/high concentration/saline/hippocampus/MergedData.txt',
-    # 'Data/high concentration/saline/midbrain/MergedData.txt',
-    # 'Data/high concentration/saline/striatum/MergedData.txt',
-    # 'Data/high concentration/saline/thalamus/MergedData.txt',
-    # 'Data/high concentration/saline/whole brain/MergedData.txt',
-    # '20190510_135816_syn_data.txt'
+    # 'Data/MergedData_100821.txt',
+    # 'Data/MergedData_102221.txt',
+    # 'Data/MergedData_102521.txt',
+    # 'Data/MergedData_120921.txt',
+    # 'Data/MergedData_011322.txt',
+    # 'Data/MergedData_021622.txt',
+    # 'Data/MergedData_031122.txt',
+    # 'Data/MergedData_042022.txt',
 ]
 
 cur_time = time.strftime("%Y%m%d_%H%M%S")

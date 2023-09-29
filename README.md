@@ -114,7 +114,7 @@ The training stage takes the labeled input data and create the classifier for th
 This will create a trained classifier that has following name convention: `BINARY_CLASSIFIER_[training mode]_[current time]_[training data size].h5`
 
 ```bash
-python 1D_CNN_Binary.py -e 20 -d BINARY_TWSD_20190520_135333.txt
+python 1D_CNN_Binary.py -e 120 -d BINARY_TWSD_20190520_135333.txt
 ```
 
 ## 2.3 Training step classifer
@@ -122,18 +122,8 @@ python 1D_CNN_Binary.py -e 20 -d BINARY_TWSD_20190520_135333.txt
 This will create a trained classifier that has following name convention: `STEP_CLASSIFIER_[training mode]_[current time]_[training data size].h5`
 
 ```bash
-python 1D_CNN_Steps.py -e 20 -d STEPS_TWSD_20190520_135333.txt
+python 1D_CNN_Steps.py -e 70 -d STEPS_TWSD_20190520_135333.txt
 ```
-
-## 2.4 Example for single layer ML training **(outdated)**
-
-> The single ML layered prediction (and training) was initially used for the project. We may use 2ML layered training mostly but just for completeness, we put information about single ML layer training.
-
-```bash
-python 1D_CNN_Train.py -e 20 -d MyLabelData.txt
-```
-
-## 2.5 Training data structure
 
 ---
 
@@ -152,11 +142,11 @@ For binary classifier, the trained model name usually starts with `BINARY_CLASSI
 | Arguments |                             Descriptions                             | Type |
 | :-------: | :------------------------------------------------------------------: | :--: |
 |    -h     |                              Show help                               |      |
-|    -p     |                           Prediction flag                            | bool |
+|    -f     |                     Target folder for data files                     | str  |
 |    -mb    |                Binary classifier model (.h5) filename                | str  |
 |    -ms    |                 Step classifier model (.h5) filename                 | str  |
 |    -i     |                           Input excel file                           | str  |
-|    -f     |                     Target folder for data files                     | str  |
+|    -p     |                           Prediction flag                            | bool |
 |    -a     | If -a is set with -p, it will process all files in the target folder |      |
 
 ---
@@ -175,25 +165,7 @@ Example below shows how to predict single excel file. `-i` flag is used insted o
 python 1D_CNN_2L_Prediction.py -i Data/2021/nicotine\ cortex\ 1800\ gain\ 100ms\ 3mW\ tirf\ 1.xlsx -mb BINARY_CLASSIFIER_1DCNN_20190611_202715_67660.h5 -ms STEP_CLASSIFIER_1DCNN_20190521_155002_49281.h5 -p
 ```
 
-## 3.4 Single ML layer prediction **(outdated)**
-
-> The single ML layered prediction (and training) was initially used for the project. We may use 2ML layered predictions mostly but just for completeness, we put information about single ML layer prediction.
-
-### Single ML prediction example (single Excel file)
-
-```bash
-python 1D_CNN_Train.py -i test.xlsx -m 20190308_092346_1DCNN_numofepoch\(20\)_batchsize\(100\)_lr\(0.0001\).h5 -p
-```
-
-### Prediction example (all Excel files in the target folder)
-
-This example shows how to predict all Excel files in the target folder. You have to add -a flag with -f argument. The -f option specifies the target folder.
-
-```bash
-python 1D_CNN_Train.py -m 20190429_150721_41870.h5 -f Data/high\ concentration/saline/striatum -p -a
-```
-
-## 3.5 Predicted data structure
+## 3.4 Predicted data structure
 
 `1D_CNN_2L_Prediction.py` will create folders and files with parenthesis in the tree below. Ones with parenthesis (e.g. 0M, 1M, 2M, 3M, and Result.csv) will be created by `GUI.py` which is next stage (`correction stage`).
 
@@ -423,9 +395,3 @@ After merging all data into one file (with correct label), you can run this comm
 ```bash
 $ python SplitTrainingData.py -d TWSD_20190510_140856.txt
 ```
-
-# Reference
-
-Results of predictions
-
-> https://docs.google.com/spreadsheets/d/1D7YPc5JOYatVD83BaK5mRgsWw8S1rOHwZbeo4YFX3n4/edit#gid=0
