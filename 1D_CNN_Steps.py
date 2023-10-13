@@ -14,10 +14,10 @@ import seaborn as sns
 import tensorflow as tf
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense, Conv1D, Flatten, MaxPool1D, Dropout, Activation, LSTM
-from tensorflow.python.keras.optimizers import Adam
+from tensorflow.python.keras.optimizer_v2.adam import Adam
 from tensorflow.python.keras.utils import np_utils
 from tensorflow.python.keras.models import load_model
-from tensorflow.python.keras.utils import multi_gpu_model
+# from tensorflow.python.keras.utils import multi_gpu_model
 from sklearn.metrics import confusion_matrix
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
