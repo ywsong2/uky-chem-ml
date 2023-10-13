@@ -25,13 +25,6 @@ from sklearn.model_selection import train_test_split
 import h5py
 from argparse import ArgumentParser
 
-
-# Import wandb
-import wandb
-from wandb.keras import WandbCallback
-
-wandb.init(project="birany-training", entity="ywsong2")
-
 # Example prediction commands
 # python 1D_CNN_Train.py -i test.xlsx -m 20190308_092346_1DCNN_numofepoch\(20\)_batchsize\(100\)_lr\(0.0001\).h5 -p
 
@@ -119,14 +112,7 @@ if __name__ == '__main__':
     print('TF version = ', tf.__version__)
     print('Keras version = ', tf.keras.__version__)
     print('\n')
-    
-    # Wandb config    
-    wandb.config = {
-        "learning_rate": LR,
-        "epochs": NUM_EPOCH,
-        "batch_size": BATCH_SIZE
-    }
-    
+        
     if PREDMODE:
         if len(MODELNAME) == 0:
             print('ERROR: Specify valid target model name and input file name!')
@@ -333,7 +319,7 @@ if __name__ == '__main__':
 
             print(model.summary())
         
-        model.fit(train_X, train_Y, validation_data=(test_X, test_Y), epochs=NUM_EPOCH, batch_size=BATCH_SIZE, callbacks=[WandbCallback()])
+        model.fit(train_X, train_Y, validation_data=(test_X, test_Y), epochs=NUM_EPOCH, batch_size=BATCH_SIZE, callbacks=[])
 
         # score model and log accuracy and parameters
         scores = model.evaluate(test_X, test_Y, verbose=0)
