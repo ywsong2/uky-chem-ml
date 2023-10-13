@@ -1,2 +1,6 @@
 temp_input_binary.txt
 temp_minmax.txt
+
+# Training data (too large to put on github)
+BINARY_TWSD_20220614_105447_96950.txt
+STEPS_TWSD_20220614_105447_96950.txt

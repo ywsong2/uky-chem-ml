@@ -98,22 +98,29 @@ The flowchart below shows the overall process using 2 machine learning (2ML) lay
 
 The training stage takes the labeled input data and create the classifier for the model. For 2ML layer training, two different trainings are required to create a binary classifier and step classifier.
 
+> You can download sample training data links below: Save the files under root folder
+
+- For binary training data: https://drive.google.com/file/d/12El3RBvokAyY-FIJ31TcKTf3mj_lPK0m/view?usp=drive_link
+- For step training: https://drive.google.com/file/d/1ezF2Ex5g2eAFm-4TgGP8K6o5o-t_Wz8z/view?usp=sharing
+
 ## 2.1 Input arguments for training
 
-| Arguments |    Descriptions     | Type  |  Default value  |
-| :-------: | :-----------------: | :---: | :-------------: |
-|    -h     |      Show help      |       |                 |
-|    -e     |   Number of EPOCH   |  int  |       30        |
-|    -b     |     Batch size      |  int  |       100       |
-|    -d     | Input data filename |  str  | MyLabelData.txt |
-|    -l     |    Learning rate    | float |     0.0001      |
+| Arguments |           Descriptions            | Type  |  Default value  |
+| :-------: | :-------------------------------: | :---: | :-------------: |
+|    -h     |             Show help             |       |                 |
+|    -e     |          Number of EPOCH          |  int  |       30        |
+|    -b     |            Batch size             |  int  |       100       |
+|    -d     |        Input data filename        |  str  | MyLabelData.txt |
+|    -l     |           Learning rate           | float |     0.0001      |
+|    -p     |           Predict mode            | flag  |      false      |
+|    -a     | Recursively search all sub-folder | flag  |      false      |
 
 ## 2.2 Training binary classifer
 
 This will create a trained classifier that has following name convention: `BINARY_CLASSIFIER_[training mode]_[current time]_[training data size].h5`
 
 ```bash
-python 1D_CNN_Binary.py -e 120 -d BINARY_TWSD_20190520_135333.txt
+python 1D_CNN_Binary.py -e 120 -d BINARY_TWSD_20220614_105447_96950.txt
 ```
 
 ## 2.3 Training step classifer
@@ -121,7 +128,7 @@ python 1D_CNN_Binary.py -e 120 -d BINARY_TWSD_20190520_135333.txt
 This will create a trained classifier that has following name convention: `STEP_CLASSIFIER_[training mode]_[current time]_[training data size].h5`
 
 ```bash
-python 1D_CNN_Steps.py -e 70 -d STEPS_TWSD_20190520_135333.txt
+python 1D_CNN_Steps.py -e 70 -d STEPS_TWSD_20220614_105447_96950.txt
 ```
 
 ---
