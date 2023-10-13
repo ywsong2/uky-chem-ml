@@ -14,7 +14,7 @@ import seaborn as sns
 import tensorflow as tf
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense, Conv1D, Flatten, MaxPool1D, Dropout, Activation, LSTM
-from tensorflow.python.keras.optimizers import adam_v2
+from tensorflow.python.keras.optimizer_v2.adam import Adam
 from tensorflow.python.keras.utils import np_utils
 from tensorflow.python.keras.models import load_model
 # from tensorflow.python.keras.utils import multi_gpu_model
@@ -37,9 +37,9 @@ parser.add_argument('-e','--numepoch', metavar='', type=int, help='Number of EPO
 parser.add_argument('-b','--batchsize', metavar='', type=int, help='Batch size', default=100)
 parser.add_argument('-d','--data', metavar='', type=str, help='Data filename', default='MyLabelData.txt')
 parser.add_argument('-l','--learnrate', metavar='', type=float, help='Learning rate', default=0.0001)
-parser.add_argument('-p', action='store_true')
+parser.add_argument('-p', action='store_true', help='If -p is set, prediction mode')
 parser.add_argument('-r', action='store_true')
-parser.add_argument('-a', action='store_true')
+parser.add_argument('-a', action='store_true', help='If -a is set, it predict all sub-folders in the target folder')
 parser.add_argument('-m','--model', metavar='', type=str, help='Model name to load for prediction', default='')
 parser.add_argument('-i','--input', metavar='', type=str, help='Target input file to predict', default='')
 parser.add_argument('-f', '--datafolder', metavar='', type=str, help='Target folder for data files', default='')
@@ -121,7 +121,7 @@ if __name__ == '__main__':
             print('-- Load model --')
             model = load_model(MODELNAME)
             model.summary()
-            model.compile(loss='sparse_categorical_crossentropy', optimizer=adam_v2(lr=LR), metrics=['accuracy'])
+            model.compile(loss='sparse_categorical_crossentropy', optimizer=Adam(lr=LR), metrics=['accuracy'])
             #sys.exit(0)
     
         input_files = []
@@ -288,7 +288,7 @@ if __name__ == '__main__':
             model.add(LSTM(64, return_sequences=True, activation='relu'))
             model.add(Dropout(0.3))
             model.add(Dense(4, activation='softmax'))
-            model.compile(loss='categorical_crossentropy', optimizer=adam_v2(lr=LR, decay=1e-5), metrics=['accuracy'])          
+            model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=LR, decay=1e-5), metrics=['accuracy'])          
         else:
             # Reshape into correct dimensions to input into CNN
             train_X = train_X.reshape(train_X.shape[0], train_X.shape[1], 1).astype('float32')
@@ -315,11 +315,11 @@ if __name__ == '__main__':
             model.add(Dense(2, activation='softmax'))
             print(model.summary())
             
-            model.compile(loss='categorical_crossentropy', optimizer=adam_v2(lr=LR, decay=1e-5), metrics=['accuracy'])
+            model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=LR, decay=1e-5), metrics=['accuracy'])
 
             print(model.summary())
         
-        model.fit(train_X, train_Y, validation_data=(test_X, test_Y), epochs=NUM_EPOCH, batch_size=BATCH_SIZE, callbacks=[])
+        model.fit(train_X, train_Y, validation_data=(test_X, test_Y), epochs=NUM_EPOCH, batch_size=BATCH_SIZE)
 
         # score model and log accuracy and parameters
         scores = model.evaluate(test_X, test_Y, verbose=0)
